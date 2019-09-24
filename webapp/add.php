@@ -1,18 +1,28 @@
 <?php
+//sets the configuration option value
 ini_set('display_errors', 1);
+//sets the configuration option value 
 ini_set('display_startup_errors', 1);
+//sets all php errors to be recorded
 error_reporting(E_ALL);
 
+//sets variable to false
 $dbconnecterror = FALSE;
+//sets variable to null
 $dbh = NULL;
 
+//necessitates the file to be presented one time
 require_once 'credentials.php';
 
+//begins try
 try{
 	
+	//sets variable to the database name and password
 	$conn_string = "mysql:host=".$dbserver.";dbname=".$db;
 	
+	//sets variable to a new connection 
 	$dbh= new PDO($conn_string, $dbusername, $dbpassword);
+	// if there is an error in SQL, PDO will throw exceptions and script will stop running
 	$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
 }catch(Exception $e){
