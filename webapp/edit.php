@@ -10,7 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$complete = 1;
 	} else { 
 		$complete = 0;
-	if empty ($_POST['finBy'])) {
+	if (empty($_POST['finBy'])) {
+		$finBy = null;
 	} else {
 		$finBy = $_POST['finBy'];
 	}
