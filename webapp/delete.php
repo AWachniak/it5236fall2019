@@ -1,14 +1,4 @@
 <?php
-//sets the configuration option value
-ini_set('display_errors', 1);
-//sets the configuration option value
-ini_set('display_startup_errors', 1);
-//reports all errors
-error_reporting(E_ALL);
-
-
-
-
 //executes if posting
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$listID = $_POST['listID'];
