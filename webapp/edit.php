@@ -13,13 +13,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if empty ($_POST['finBy'])) {
 	} else {
 		$finBy = $_POST['finBy'];
-	}$listItem = $_POST['listItem'];
+	}
+	$listItem = $_POST['listItem'];
 	
 	//call to get api
 	// api url 
 	$url="http://3.230.84.0/api/task.php?listID=$listID";
 			
-	$data = array('completed'=>'$complete','taskName'=>'$finBy','taskDate'=>$finBy);
+	$data = array('completed'=>$complete,'taskName'=>$listItem,'taskDate'=>$finBy);
 	$data_json = json_encode($data);
 
 	$ch = curl_init();
@@ -31,15 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	//body of response
 	$response = curl_exec($ch); 
 	$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-	$response  = curl_exec($ch);
 	curl_close($ch);
 			
 	//staus code 204
-	if($httpcode=='204'){
+	if($httpcode==204){
 		header("Location: index.php");
 	} else {
 		header("Location: index.php?error=edit");
 	}
-		
-	
-?>
