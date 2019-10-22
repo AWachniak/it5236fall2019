@@ -1,11 +1,4 @@
 <?php
-//sets the configuration option value
-ini_set('display_errors', 1);
-//sets the configuration option value
-ini_set('display_startup_errors', 1);
-//reports all errors
-error_reporting(E_ALL);
-
 	$url="http://3.230.84.0/api/tasks.php";
 
 	$ch = curl_init();

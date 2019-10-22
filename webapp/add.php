@@ -1,11 +1,4 @@
 <?php
-//sets the configuration option value
-ini_set('display_errors', 1);
-//sets the configuration option value 
-ini_set('display_startup_errors', 1);
-//sets all php errors to be recorded
-error_reporting(E_ALL);
-
 //executes if the request metod equals "POST"
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$listItem = $_POST['listItem'];
