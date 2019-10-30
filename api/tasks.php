@@ -20,13 +20,19 @@ try{
 if($_SERVER['REQUEST_METHOD'] == "GET") {
 	$listID = $_GET['listID'];		
 	try {
-		$sql = "SELECT * FROM doList";
+		$sql = "SELECT listID, listItem AS taskName, finishDate AS taskDate, complete AS completed FROM doList";
 		$stmt = $dbh->prepare($sql);
 		$response = $stmt->execute();
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	
+
+		// $final = [];
+		foreach($result as $task) {
+			$task['completed'] = $task['completed'] == "1" ? true : false;
+			// $final[] = $task;
+		}
 		http_response_code(200);
 		echo json_encode ($result);
+		// echo json_encode($final);
 		exit();
 
 	} catch (PDOException $e) {

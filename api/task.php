@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "PUT") {
 	//decode the json body from the request
 	$task = json_decode(file_get_contents('php://input'), true);
 	if (array_key_exists('completed', $task)) {
-		$complete = $task["completed"];
+		$complete = $task["completed"] ? 1 : 0;
 	} else {
 		http_response_code(400);
 		echo "Missing completed status";
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == "PUT") {
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$task = json_decode(file_get_contents('php://input'), true);
 	if (array_key_exists('completed', $task)) {
-		$complete = $task["completed"];
+		$complete = $task["completed"] ? 1 : 0;
 	} else {
 		http_response_code(400);
 		echo "Missing completed status";
@@ -138,9 +138,9 @@ if ($_SERVER['REQUEST_METHOD'] == "PUT") {
 			$taskID = $dbh->lastInsertId();
 				$fulltask = [
 				"listID"=>$taskID,
-				"complete"=>$complete,
-				"listItem"=>$taskName,
-				"finishDate"=>$taskDate
+				"completed"=>$complete,
+				"taskName"=>$taskName,
+				"taskDate"=>$taskDate
 				];
 			http_response_code(201);
 			echo json_encode($fulltask);
