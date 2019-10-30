@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET") {
 
 		// $final = [];
 		foreach($result as $task) {
-			$task['completed'] = $task['completed'] == "1" ? true : false;
+			$task['completed'] = $task['completed'] ? true : false;
 			// $final[] = $task;
 		}
 		http_response_code(200);
