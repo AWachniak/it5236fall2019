@@ -91,8 +91,46 @@
 				</div>
 				<?php } ?>
 			<?php } ?>
+		<footer>
+			<span class = 'hidden' id = 'greeting'> Welcome! You first vistited this site from this computer on </span>
+			<button type = 'button'> Do not track me </button>
+		</footer>
 	</body>
-	<footer>
-		<!-- pull from html local storage -->
-	</footer>
+	<script>
+		//connect to DOM
+		var footer = document.querySelector('footer');
+		var greeting = document.querySelector('footer #greeting');
+		var visit = document.querySelector('footer #visit');
+		var notTracking = document.querySelector('footer button');
+		
+		//local storage keys
+		var STORAGE_KEY_VISIT = 'visit';
+		var STORAGE_KEY_NO_TRACKING = 'notTracking';
+		
+		//if tracking
+		if (!localStorage.getItem(STORAGE_KEY_NO_TRACKING)) {
+			//get current date
+			var currentDate = new Date();
+			var dateString = currentDate.toDateString() + ' ' + curentDate.toLocaleTimeString('en-us');
+			
+			//add to localStorage
+			localStorage.setItem(STORAGE_KEY_VISIT), dateString);
+			greeting.classList.remove('hidden');
+		}
+		
+		//display visit time
+		var storedDate  = localStorage.getItem(STORAGE_KEY_VISIT);
+		timeVisited.innerHTML = storedDate;
+		
+	//if not tracking, deletes welcome line
+		}else{
+			footer.classList.add('hidden');
+		}
+		
+		//not tracking
+		notTracking.addEventListener('click',function() {
+			localStorage.removeItem(STORAGE_KEY_VISIT); 
+			localStorage.setItem(STORAGE_KEY_VISIT, 'true');
+		}
+	</script>
 </html>
