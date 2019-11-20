@@ -92,4 +92,7 @@
 				<?php } ?>
 			<?php } ?>
 	</body>
+	<footer>
+		<!-- pull from html local storage -->
+	</footer>
 </html>
